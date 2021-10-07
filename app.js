@@ -4,16 +4,11 @@ const path = require('path');
 const taskRoutes = require('./routes/taskRoutes');
 
 // Create express application
-const app = express();
+app = express();
 
 // Listen on port 8080 for connections
 app.listen(8080, () => {
-  console.log('Server started and listening at http://localhost:8080');
-});
-
-// Respond when a GET request is made to the index page
-app.get('/', (request, response) => {
-  response.render('index');
+  console.log(`Server started and listening at http://localhost:8080`)
 });
 
 // Set view engine and views directory
