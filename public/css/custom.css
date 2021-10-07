@@ -1,0 +1,24 @@
+/* Small style changes  */
+select,
+input[type="text"] {   
+  border-color: #000 !important;
+  outline: 0 none !important;
+}
+
+select:focus,
+input[type="text"]:focus {   
+  border-color: #000 !important;
+  outline: 0 none !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none !important;
+}
+
+.btn:focus {
+  box-shadow: none !important;
+}
+
+a {
+  text-decoration: none;
+}
