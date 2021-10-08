@@ -18,5 +18,8 @@ app.set('views', path.join(__dirname, 'views'));
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Handle HTTP POST requests
+app.use(express.urlencoded({ extended: true }));
+
 // Application routes
 app.use(taskRoutes);
