@@ -7,9 +7,14 @@ const router = express.Router();
 
 // GET Index Page
 router.get('/', taskController.task_index);
+// GET About Page
+router.get('/about', taskController.task_about);
 // GET/POST Create page
 router.get('/task/create', taskController.task_create_get);
 router.post('/task/create', taskController.task_create_post);
+// GET/POST Delete Page
+router.get('/task/delete/:id', taskController.task_delete_get);
+router.post('/task/delete/:id', taskController.task_delete_post);
 
 // Export router
 module.exports = router;

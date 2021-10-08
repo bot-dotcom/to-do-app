@@ -24,10 +24,35 @@ const createTask = (task, status, callback) => {
   });
 };
 
+// Get task
+const getTask = (id, callback) => {
+  const sql = `SELECT * FROM Tasks WHERE Task_Id = ${id}`;
+  database.appDatabase.get(sql, [], (error, row) => {
+    if (error) {
+      callback(error.message);
+    }
+    callback (row);
+  });
+};
+
+// Delete task  
+const deleteTask = (id, callback) => {
+  const sql = `DELETE FROM Tasks WHERE Task_Id = ${id}`;
+  database.appDatabase.run(sql, [], (error, row) => {
+    if (error) {
+      callback(error.message);
+    }
+    const successMessage = "The task was successfully deleted."
+    callback(successMessage);
+  });
+};
+
 // Export models
 module.exports = {
   getTasks,
-  createTask
+  createTask,
+  getTask,
+  deleteTask
 };
 
 

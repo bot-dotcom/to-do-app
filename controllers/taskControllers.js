@@ -9,6 +9,11 @@ function task_index (request, response) {
   });
 };
 
+// About page controller
+const task_about = (request, response) => {
+	response.render('about');
+};
+
 // Create task page controller
 // GET
 function task_create_get (request, response) {
@@ -24,9 +29,29 @@ function task_create_post (request, response) {
   });
 };
 
+// Delete task page controller
+// GET
+const task_delete_get = (request, response) => {
+  const id = request.params.id;
+  taskModel.getTask(id, (result) => {
+    console.log(result);
+    response.render('delete', { task: result });
+  });
+};
+// POST
+const task_delete_post = (request, response) => {
+  const id = request.params.id;
+  taskModel.deleteTask(id, () => {
+    response.redirect('/');
+  });
+};
+
 // Export controllers
 module.exports = {
   task_index,
+  task_about,
   task_create_get,
-  task_create_post
+  task_create_post,
+  task_delete_get,
+  task_delete_post
 };
