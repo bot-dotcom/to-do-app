@@ -6,6 +6,9 @@
       <div class="mb-3">
         <label for="inputTask">Task:</label>
         <input autofocus type="text" class="form-control shadow-none mb-3" id="inputTask" name="Task">
+        <% if (errors.Task) { %>
+          <div class="text-danger mb-3"><%= errors.Task.msg %></div>
+        <% } %>
         <label for="inputStatus">Status:</label>
         <select disabled class="form-select shadow-none" id="inputStatus" name="Status">
           <option value="In progress" selected>In progress</option>

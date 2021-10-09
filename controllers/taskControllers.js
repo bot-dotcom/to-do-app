@@ -1,5 +1,6 @@
 // Load modules
 const taskModel = require('../models/taskModels');
+const { validationResult } = require('express-validator');
 
 // Index page controller
 function task_index (request, response) {
@@ -17,10 +18,14 @@ const task_about = (request, response) => {
 // Create task page controllers
 // GET
 function task_create_get (request, response) {
-  response.render('create');
+  response.render('create', { errors: {} });
 };
 // POST
 function task_create_post (request, response) {
+  const errors = validationResult(request);
+  if (!errors.isEmpty()) {
+    return response.render('create', { errors: errors.mapped() });
+  }
   const task = request.body.Task;
   const status = 'In progress';
   taskModel.createTask(task, status, (result) => {
@@ -51,11 +56,15 @@ const task_delete_post = (request, response) => {
 const task_update_get = (request, response) => {
   const id = request.params.id;
   taskModel.getTask(id, (result) => {
-    response.render('update', { task: result });
+    response.render('update', { task: result, errors: {} });
   });
 };
 // POST
 const task_update_post = (request, response) => {
+  const errors = validationResult(request);
+  if (!errors.isEmpty()) {
+    return response.render('update', { task: request.body, errors: errors.mapped() });
+  }
   const task = request.body.Task;
   const status = request.body.Status;
   const id = request.params.id;

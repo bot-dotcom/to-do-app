@@ -21,5 +21,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Handle HTTP POST requests
 app.use(express.urlencoded({ extended: true }));
 
+// 
+app.use(express.json());
+
 // Application routes
 app.use(taskRoutes);
