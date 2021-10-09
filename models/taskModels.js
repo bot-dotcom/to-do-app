@@ -47,12 +47,25 @@ const deleteTask = (id, callback) => {
   });
 };
 
+// Update task  
+const updateTask = (task, status, id, callback) => {
+  let sql = `UPDATE Tasks SET Task = '${task}', Status = '${status}' WHERE (Task_ID = ${id})`;
+  database.appDatabase.run(sql, [], (error, row) => {
+    if (error) {
+      callback(error.message);
+    }
+    const successMessage = "The task was successfully updated."
+    callback(successMessage);
+  });
+};
+
 // Export models
 module.exports = {
   getTasks,
   createTask,
   getTask,
-  deleteTask
+  deleteTask,
+  updateTask
 };
 
 
