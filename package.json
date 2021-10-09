@@ -1,8 +1,15 @@
 {
+  "name": "To Do Application",
+  "version": "1.0.0",
+  "description": "The application is a simple To Do List, which implements CRUD operations in the node.js javascript runtime environment.",
+  "main": "app.js",
+  "keywords": ["Node.js, Express.js, SQLite, CRUD"],
+  "author": "Dejan Samardzija",
+  "license": "MIT",
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "express-validator": "^6.12.2",
+    "express-validator": "^6.12.1",
     "sqlite3": "^5.0.2"
   }
 }
