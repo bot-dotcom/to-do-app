@@ -4,7 +4,7 @@ const path = require('path');
 const taskRoutes = require('./routes/taskRoutes');
 
 // Create express application
-app = express();
+const app = express();
 
 // Listen on port 8080 for connections
 app.listen(8080, () => {
