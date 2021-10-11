@@ -3,7 +3,7 @@ const taskModel = require('../models/taskModels');
 const { validationResult } = require('express-validator');
 
 // Index page controller
-function indexPageGET (request, response) {
+function index_page_get (request, response) {
   taskModel.getTasks((queryResult) => {
     console.log(queryResult);
     response.render('index', { tasks: queryResult });
@@ -11,17 +11,17 @@ function indexPageGET (request, response) {
 };
 
 // About page controller
-function aboutPageGET (request, response) {
+function about_page_get (request, response) {
 	response.render('about');
 };
 
 // Create task page controllers
 // GET
-function createPageGET (request, response) {
+function create_page_get (request, response) {
   response.render('create', { errors: {} });
 };
 // POST
-function createPagePOST (request, response) {
+function create_page_post (request, response) {
   const errors = validationResult(request);
   if (!errors.isEmpty()) {
     return response.render('create', { errors: errors.mapped() });
@@ -36,7 +36,7 @@ function createPagePOST (request, response) {
 
 // Delete task page controllers
 // GET
-function deletePageGET (request, response) {
+function delete_page_get (request, response) {
   const id = request.params.id;
   taskModel.getTask(id, (result) => {
     console.log(result);
@@ -44,7 +44,7 @@ function deletePageGET (request, response) {
   });
 };
 // POST
-function deletePagePOST (request, response) {
+function delete_page_post (request, response) {
   const id = request.params.id;
   taskModel.deleteTask(id, () => {
     response.redirect('/');
@@ -53,14 +53,14 @@ function deletePagePOST (request, response) {
 
 // Update task page controllers
 // GET
-function updatePageGET (request, response) {
+function update_page_get (request, response) {
   const id = request.params.id;
   taskModel.getTask(id, (result) => {
     response.render('update', { task: result, errors: {} });
   });
 };
 // POST
-function updatePagePOST (request, response) {
+function update_page_post (request, response) {
   const errors = validationResult(request);
   if (!errors.isEmpty()) {
     return response.render('update', { task: request.body, errors: errors.mapped() });
@@ -75,12 +75,12 @@ function updatePagePOST (request, response) {
 
 // Export controllers
 module.exports = {
-  indexPageGET,
-  aboutPageGET,
-  createPageGET,
-  createPagePOST,
-  deletePageGET,
-  deletePagePOST,
-  updatePageGET,
-  updatePagePOST
+  index_page_get,
+  about_page_get,
+  create_page_get,
+  create_page_post,
+  delete_page_get,
+  delete_page_post,
+  update_page_get,
+  update_page_post
 };

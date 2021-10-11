@@ -7,19 +7,18 @@ const taskValidator = require('../validation/taskValidator');
 const router = express.Router();
 
 // GET Index Page
-router.get('/', taskController.indexPageGET);
+router.get('/', taskController.index_page_get);
 // GET About Page
-router.get('/about', taskController.aboutPageGET);
+router.get('/about', taskController.about_page_get);
 // GET/POST Create page
-router.get('/task/create', taskController.createPageGET);
-router.post('/task/create', taskValidator.validateTask, taskController.createPagePOST);
+router.get('/task/create', taskController.create_page_get);
+router.post('/task/create', taskValidator.validateTask, taskController.create_page_post);
 // GET/POST Delete Page
-router.get('/task/delete/:id', taskController.deletePageGET);
-router.post('/task/delete/:id', taskController.deletePagePOST);
+router.get('/task/delete/:id', taskController.delete_page_get);
+router.post('/task/delete/:id', taskController.delete_page_post);
 // GET/POST Update Page
-router.get('/task/update/:id', taskController.updatePageGET);
-router.post('/task/update/:id', taskValidator.validateTask, taskController.updatePagePOST);
+router.get('/task/update/:id', taskController.update_page_get);
+router.post('/task/update/:id', taskValidator.validateTask, taskController.update_page_post);
 
 // Export router
 module.exports = router;
-
